@@ -3,36 +3,67 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Hamilton Hangman!</title>
+    <!-- Bootstrap -->
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- Google Fonts -->
 	<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+    <!-- CSS -->
 	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
-	<link rel="stylesheet" type="text/javascript" href="assets/game.js">
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
 <body>
 	
-<!--Set up header-->
-	<div class = "page-header">
+<!-- Header Image -->
+<div class="container">
+	<div class="page-header">
 	<!--Hamilton Hangman header-->
 	<img src="assets/images/header.jpg" class="img-responsive center-block" alt="Hamilton Hangman">
 	</div>
-<!--game-->
-	<div class="container">
+<!-- Start of Game -->
     <div class="row">
-        <div class="col-sm-6"></div>
-        <div class="col-sm-6">
-        	<div id="guess-this">
-        		
-        	</div>
+        <div class="col-lg-12">
+            <!-- Header text -->
+            <div class="panel panel-default">
+                <div class="heading">
+                    <h3 class="title">What Comes Next?</h3>
+                    <h5>Enter a letter, see if you can guess the word! Do not throw away your shot!</h5>
+                </div>
+                <!-- letter tiles -->
+                <div class="panel-body">
+                    <h3 id="tiles">_ _ _ _ _ _ _ _ _ _</h3>
+                </div>
+            </div>
+            <!-- Div to hold incorrect guesses -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3 id="incorrect-header">Incorrect Guesses: </h3>
+                    <span id="incorrect-guesses"></span>
+                </div>
+            </div>
+            <!-- Number of guesses left -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3 id="guesses-header">Guesses Remaining: </h3>
+                    <span id="guesses-left">9</span>
+                </div>
+            </div>
+            <!-- Wins counter -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                  <h3 id="wins-header">Wins: </h3>  
+                  <span id="win-count">0</span>
+                </div>
+            </div>
+            <!-- Losses counter -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <h3 id="loss-count">Losses: </h3>
+                    <span id="loss-coun">0</span>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-6"></div>
-        <div class="col-sm-6">
-        	<h3>What comes next?</h3>
-        </div>
-    </div>
-</div>
- 	
+
+<!-- Javascript -->
+<link rel="stylesheet" type="text/javascript" href="assets/game.js">
 </body>
 </html>
