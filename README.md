@@ -1,0 +1,3 @@
+# Hamilton Hangman
+
+This is a Hangman game written in Javascript. When the application loads, it randomly picks a word from a preset word bank, which the user is supposed to guess. As the user enters their guess, the application captures the letter's character code. Conditional statements are used to determine how to dynamically update the page. This could mean replacing a blank with a correct letter, or adding the user's guess to their list of incorrect guesses. The application keeps track of the user's wins and losses, and dynamically updates their win/loss record after each round.
