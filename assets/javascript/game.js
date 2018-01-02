@@ -1,108 +1,57 @@
-$(document).ready(function() {
-window.onload = function () {
+// Set global variables
 
-  var alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
-        'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
-        't', 'u', 'v', 'w', 'x', 'y', 'z'];
-  var guessRem = 12
-  var answers = ["hamilton", "schuyler sisters", "and peggy", "the battle of yorktown", 
-              "immigrants we get the job done", "marquis de lafayette", "write like you're running out of time",
-              "the world turned upside down",];
-
-  
-
-    
-//game panel - current word/phrase
-var guessThis = answers[Math.floor(Math.random() * answers.length)];
-var numLetters = guessThis.length
-
-numLetters.forEach(function(setup) {
-	var letterTiles = $("tiles");
-	letterTiles.attr("data-letter", alphabet);
-	letterTiles.text(
-		if guess )
+// Array holding words to guess
+var answers = ["hamilton", "schuyler", "yorktown", "treasury", 
+              "duel", "lafayette", "legacy","burr", "jefferson" "washington"];
+// Variable to hold current word for user to guess
+var currentWord = "";
+// Variable turning letters into an array of each individual letter
+var letters = [];
+// Number of tiles, will dynamically update with each guess
+var numTiles = 0;
+// Array to hold word (letters and blanks) as guesses are made
+var wordInProgress = [];
+// Array to hold letters that were guessed incorrectly
+var wrongLetters = [];
+// Count wins, losses, and number of guesses remaining
+var wins = 0;
+var losses = 0;
+var guessLeft = 9;
 
 
-})
+// Begin game logic
 
-    for (var i = 0; i < word.length; i++) {
-      correct.setAttribute('id', 'my-word');
-      guess = document.createElement('li');
-      guess.setAttribute('class', 'guess');
-      if (word[i] === "-") {
-        guess.innerHTML = "-";
-        space = 1;
-      } else {
-        guess.innerHTML = "_";
-      }
+// Function to start game
+function start() {
+  // Set guesses so there's nine remaining again
+  var guessLeft = 9
 
-      guesses.push(guess);
-      wordHolder.appendChild(correct);
-      correct.appendChild(guess);
-    }
-  }
-  
-  // Show lives
-   comments = function () {
-    showLives.innerHTML = "You have " + guessRem + " shots left.";
-    if (lives < 1) {
-      showLives.innerHTML = "You were outgunned, outmanned, outnumbered, outplanned!";
-    }
-    for (var i = 0; i < guesses.length; i++) {
-      if (counter + space === guesses.length) {
-        showLives.innerHTML = "You did not throw away your shot!";
-      }
-    }
+  // Randomizer to pick new word from answers array
+  var currentWord = answers[Math.floor(Math.random() * answers.length)];
+  // Turn letters into array of each individual letter
+  var letters = currentWord.split("");
+  // Count number of letters in current word
+  var numTiles =letters.length;
+
+  console.log(currentWord);
+
+  // Reset the word in progress
+  var wordInProgress = [];
+  // Reset wrong guesses
+  var wrongLetters =[];
+
+  // For loop to fill word in progress with the correct number of blanks
+  for (var i = 0; i < numTiles; i++) {
+    wordInProgress.push("_");
   }
 
+  console.log(wordInProgress);
 
-
-
-  // OnClick Function
-   check = function () {
-    list.onclick = function () {
-      var guess = (this.innerHTML);
-      this.setAttribute("class", "active");
-      this.onclick = null;
-      for (var i = 0; i < word.length; i++) {
-        if (word[i] === guess) {
-          guesses[i].innerHTML = guess;
-          counter += 1;
-        } 
-      }
-      var j = (word.indexOf(guess));
-      if (j === -1) {
-        lives -= 1;
-      } else {
-        comments();
-      }
-    }
-  }
-  
-    
-  // Play
-  play = function () {
-    
-
-    
-    word = word.replace(/\s/g, "-");
-    console.log(word);
-    buttons();
-  }
-
-  play();
-  
-
-
-   // Reset
-
-  document.getElementById('reset').onclick = function() {
-    correct.parentNode.removeChild(correct);
-    letters.parentNode.removeChild(letters);
-    showClue.innerHTML = "";
-    context.clearRect(0, 0, 400, 400);
-    play();
-  }
-}
-}
+  // Print number of guesses left
+  document.getElementById("guesses-left").innerHTML = numTiles;
+  // Print blanks in HTML
+  document.getElementById("tiles").innerHTML = wordInProgress.join(" ");
+  // Empty guesses from previous round
+  document.getElementById("incorrect-guesses").innerHTML = wrongLetters.join(" ");
+};
 
